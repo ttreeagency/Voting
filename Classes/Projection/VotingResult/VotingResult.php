@@ -28,16 +28,42 @@ class VotingResult
      */
     public $votes;
 
+    /**
+     * @var int
+     */
+    public $minimum;
+
+    /**
+     * @var int
+     */
+    public $maximum;
+
+    /**
+     * @var float
+     */
+    public $average;
+
     public function __construct(string $voting)
     {
         $this->voting = $voting;
         $this->voters = 0;
         $this->votes = 0;
+        $this->minimum = null;
+        $this->maximum = null;
+        $this->average = null;
     }
 
     public function record($value)
     {
         $this->voters++;
+        $value = (int)$value;
         $this->votes += (int)$value;
+        if ($this->minimum === null || $value < $this->minimum) {
+            $this->minimum = $value;
+        }
+        if ($this->maximum === null || $value > $this->maximum) {
+            $this->maximum = $value;
+        }
+        $this->average = $this->votes / $this->voters;
     }
 }
