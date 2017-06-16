@@ -36,8 +36,8 @@ final class VotingCommandHandler {
             $voting = Voting::create($vote->getFor());
         }
 
-        $votingIdentifier = new VotingIdentifier($vote->getFor(), $vote->getTag());
-        $participation = $this->participationFinder->findOnByVoter($vote->getBy()->getName(), (string)$votingIdentifier);
+        $votingIdentifier = VotingIdentifier::toString($vote->getFor(), $vote->getTag());
+        $participation = $this->participationFinder->findOnByVoter($vote->getBy()->getName(), $votingIdentifier);
         if ($participation !== null) {
             throw new VotePreviouslyRecordedException(\vsprintf('Double vote is not allowed for "%s"', [$votingIdentifier]), 1497603333);
         }

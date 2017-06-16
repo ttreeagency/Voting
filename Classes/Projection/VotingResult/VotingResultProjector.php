@@ -13,10 +13,10 @@ class VotingResultProjector extends AbstractDoctrineProjector  {
     public function whenVoteRecorded(VoteRecorded $event): void
     {
         $update = true;
-        $votingIdentifier = new VotingIdentifier($event->getFor(), $event->getTag());
-        $result = $this->get((string)$votingIdentifier);
+        $votingIdentifier = VotingIdentifier::toString($event->getFor(), $event->getTag());
+        $result = $this->get($votingIdentifier);
         if ($result === null) {
-            $result = new VotingResult((string)$votingIdentifier);
+            $result = new VotingResult($votingIdentifier);
             $update = false;
         }
 

@@ -12,9 +12,9 @@ class ParticipationProjector extends AbstractDoctrineProjector  {
 
     public function whenVoteRecorded(VoteRecorded $event): void
     {
-        $votingIdentifier = new VotingIdentifier($event->getFor(), $event->getTag());
+        $votingIdentifier = VotingIdentifier::toString($event->getFor(), $event->getTag());
         $this->add(
-            new Participation($event->getBy()->getName(), (string)$votingIdentifier, $event->getVote(), $event->getAt())
+            new Participation($event->getBy()->getName(), $votingIdentifier, $event->getVote(), $event->getAt())
         );
     }
 
