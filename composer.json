@@ -1,7 +1,8 @@
 {
+    "name": "ttree/voting",
     "description": "",
     "type": "neos-package",
-    "name": "ttree/voting",
+    "license": "MIT",
     "require": {
         "neos/neos": "^3.1",
         "neos/event-sourcing": "@dev"
