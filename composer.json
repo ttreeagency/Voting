@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "ttree/voting",
+    "require": {
+        "neos/neos": "^3.1",
+        "neos/event-sourcing": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ttree\\Voting\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Ttree.Voting"
+        }
+    }
+}
