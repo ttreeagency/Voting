@@ -1,11 +1,11 @@
-
 Neos:
   EventSourcing:
     EventStore:
       stores:
-        'Ttree.Voting:Default':
+        'Ttree.Voting:EventStream':
           boundedContexts:
             'Ttree.Voting': true
+
           storage: 'Neos\EventSourcing\EventStore\Storage\Doctrine\DoctrineEventStorage'
 
           storageOptions:
