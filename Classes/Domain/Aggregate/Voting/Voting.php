@@ -29,11 +29,6 @@ final class Voting extends AbstractEventSourcedAggregateRoot {
     protected $updatedAt;
 
     /**
-     * @var int
-     */
-    protected $voteCount;
-
-    /**
      * @var string[]
      */
     protected $tags = [];
