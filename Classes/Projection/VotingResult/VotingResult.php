@@ -16,7 +16,17 @@ class VotingResult
      * @ORM\Id
      * @var string
      */
+    public $identifier;
+
+    /**
+     * @var string
+     */
     public $voting;
+
+    /**
+     * @var string
+     */
+    public $tag;
 
     /**
      * @var int
@@ -45,9 +55,14 @@ class VotingResult
 
     public function __construct(string $voting)
     {
+        $this->identifier = $voting;
+        list($voting, $tag) = \explode('@', $voting);
         $this->voting = $voting;
+        $this->tag = $tag;
+
         $this->voters = 0;
         $this->votes = 0;
+
         $this->minimum = null;
         $this->maximum = null;
         $this->average = null;
