@@ -1,10 +1,10 @@
 {
     "name": "ttree/voting",
-    "description": "",
+    "description": "EventSourced Flow Framework Voting API Edit",
     "type": "neos-package",
     "license": "MIT",
     "require": {
-        "neos/neos": "^3.1",
+        "neos/flow": "^4.1",
         "neos/event-sourcing": "@dev"
     },
     "autoload": {
