@@ -31,17 +31,17 @@ final class VotingCommandHandler {
     public function handleVote(Vote $vote): void
     {
         try {
-        $voting = $this->votingRepository->get($vote->getFor());
+            $voting = $this->votingRepository->get($vote->getFor());
         } catch (EventStreamNotFoundException $exception) {
             $voting = Voting::create($vote->getFor());
         }
 
         $votingIdentifier = new VotingIdentifier($vote->getFor(), $vote->getTag());
         $participation = $this->participationFinder->findOnByVoter($vote->getBy()->getName(), (string)$votingIdentifier);
-
         if ($participation !== null) {
             throw new VotePreviouslyRecordedException(\vsprintf('Double vote is not allowed for "%s"', [$votingIdentifier]), 1497603333);
         }
+
         $voting->vote($vote->getVote(), $vote->getAt(), $vote->getTag(), $vote->getBy());
         $this->votingRepository->save($voting);
     }

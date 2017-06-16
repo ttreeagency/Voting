@@ -23,7 +23,7 @@ class ParticipationFinder extends AbstractDoctrineFinder  {
         $query->matching(
             $query->logicalAnd(
                 $query->equals('voter', $voter),
-                $query->equals('voting', $votingIdentifier)
+                $query->equals('identifier', $votingIdentifier)
             )
         );
 
